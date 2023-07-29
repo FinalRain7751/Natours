@@ -5,7 +5,7 @@ import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 export const URL = 'http://localhost:8000';
 
-console.log('Hello from parcel');
+// console.log('Hello from parcel');
 
 // if (module.hot) {
 //   module.hot.accept();
@@ -22,7 +22,7 @@ const bookTourBtn = document.querySelector('#book-tour');
 // DELEGATION
 if (map) {
   const locations = JSON.parse(map.dataset.locations);
-  console.log(locations);
+  // console.log(locations);
   displayMap(locations);
 }
 
@@ -46,7 +46,7 @@ if (updateUserDataForm) {
     form.append('name', updateUserDataForm.querySelector('#name').value);
     form.append('email', updateUserDataForm.querySelector('#email').value);
     form.append('photo', updateUserDataForm.querySelector('#photo').files[0]);
-    console.log(form);
+    // console.log(form);
 
     updateSettings(form, 'data');
   });

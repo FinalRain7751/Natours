@@ -6,7 +6,7 @@ const axios = require('../../node_modules/axios/dist/browser/axios.cjs');
 
 export const login = async (email, password) => {
   try {
-    console.log(`${URL}/api/v1/users/login`);
+    // console.log(`${URL}/api/v1/users/login`);
     const res = await axios({
       method: 'POST',
       url: `${URL}/api/v1/users/login`,

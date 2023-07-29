@@ -11,7 +11,8 @@
     }
   },
   "scripts": {
-    "start:dev": "nodemon server.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
     "connect-db": "mongosh 'mongodb+srv://natoursdb.khle57u.mongodb.net/natours' --apiVersion 1 --username finalrain7751 --password lHAfrpXWzIh5C0se",

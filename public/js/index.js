@@ -3,7 +3,6 @@ import { login, logout } from './login';
 import { displayMap } from './map';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
-export const URL = 'http://localhost:8000';
 
 // console.log('Hello from parcel');
 

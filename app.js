@@ -39,9 +39,19 @@ app.options('*', cors());
 // Set security http headers
 app.use(
   helmet({
-    contentSecurityPolicy: false,
+    // "contentSecurityPolicy": false,
+    "contentSecurityPolicy": {
+      directives: {
+        "default-src": ["'self'", "https://js.stripe.com/v3/"],
+        "img-src": ["'self'", "https://api.maptiler.com/maps/dataviz/"],
+        "script-src": ["'self'", "https://js.stripe.com/v3/"]
+      }
+    }
+    
   }),
 );
+
+
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {

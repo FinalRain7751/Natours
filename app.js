@@ -17,6 +17,7 @@ const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 const viewRouter = require('./routes/viewRoutes');
+const bookingController = require('./controllers/bookingController');
 
 const app = express();
 
@@ -40,18 +41,15 @@ app.options('*', cors());
 app.use(
   helmet({
     // "contentSecurityPolicy": false,
-    "contentSecurityPolicy": {
+    contentSecurityPolicy: {
       directives: {
-        "default-src": ["'self'", "https://js.stripe.com/v3/"],
-        "img-src": ["'self'", "https://api.maptiler.com/maps/dataviz/"],
-        "script-src": ["'self'", "https://js.stripe.com/v3/"]
-      }
-    }
-    
+        'default-src': ["'self'", 'https://js.stripe.com/v3/'],
+        'img-src': ["'self'", 'https://api.maptiler.com/maps/dataviz/'],
+        'script-src': ["'self'", 'https://js.stripe.com/v3/'],
+      },
+    },
   }),
 );
-
-
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
@@ -65,6 +63,13 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, please try again in one hour!',
 });
 app.use('/api', limiter);
+
+// This route needs the raw req
+app.post(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  bookingController.webhookCheckout,
+);
 
 // Body parser; reading data from body into req.body
 // Cookie parse; reading data from body into req.cookie

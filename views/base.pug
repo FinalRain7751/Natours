@@ -12,7 +12,7 @@ html(lang="en")
             link(href="https://fonts.googleapis.com/css?family=Lato:300,300i,700" rel="stylesheet")
             //- Interpolation -- Syntax: #{JS code}
             title Natours | #{title}
-    body 
+    body(data-alert=`${alert ? alert : ''}`) 
         //- h1= tour 
         //- //- Pug comment -- not outputted to the html file
         //- // Html comment -- Outputted to the html file as a html comment
